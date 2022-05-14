@@ -10,15 +10,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="10"
         android:orientation="horizontal"></LinearLayout>
 
-    <androidx.gridlayout.widget.GridLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="4"
-        app:columnCount="4"
-        app:rowCount="5">
+        android:padding="4dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:rowCount="5">
 
         <Button
             android:id="@+id/btn_parentesisOpen"
@@ -33,7 +34,7 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/boton_operaciones"
-            android:text="<-"/>
+            android:text="asd"/>
 
         <Button
             android:id="@+id/btn_clear"
@@ -118,6 +119,6 @@
             android:id="@+id/btn_suma"
             style="@style/boton_operaciones"
             android:text="+" />
-    </androidx.gridlayout.widget.GridLayout>
+    </GridLayout>
 
 </LinearLayout>
