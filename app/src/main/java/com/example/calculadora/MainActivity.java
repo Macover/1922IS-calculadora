@@ -1,7 +1,7 @@
 package com.example.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import org.mariuszgromada.math.mxparser.*;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
         cadenaDisplay = "";
         display.setText(cadenaDisplay);
     }
-    public void calcularOperacion(View vista)/* throws ScriptException*/{
-        if(!validarParentesis(display.getText().toString())){
-            System.out.println("error");
-        }else{
+    public void calcularOperacion(View vista){
+        Expression exp= new Expression(this.cadenaDisplay);
+        String result = String.valueOf(exp.calculate());
 
+        if(result != "NaN") {
+            this.display.setText(result);
+        } else {
+            this.display.setText("Syntax Error!");
         }
-    }
-
-    public static boolean validarParentesis(String cadena){
-        return true;
+        this.cadenaDisplay = "";
     }
 }
