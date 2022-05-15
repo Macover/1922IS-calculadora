@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+/*import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;*/
+
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText display;
@@ -28,5 +32,16 @@ public class MainActivity extends AppCompatActivity {
     public void limpiarDisplay(View vista){
         cadenaDisplay = "";
         display.setText(cadenaDisplay);
+    }
+    public void calcularOperacion(View vista)/* throws ScriptException*/{
+        if(!validarParentesis(display.getText().toString())){
+            System.out.println("error");
+        }else{
+
+        }
+    }
+
+    public static boolean validarParentesis(String cadena){
+        return true;
     }
 }
