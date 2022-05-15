@@ -5,24 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView display;
+    private EditText display;
+    private String cadenaDisplay = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        display = (TextView) findViewById(R.id.display);
-
-
+        display = (EditText) findViewById(R.id.display);
     }
-    public void pintaNumero(View vista){
+    public void pintaTexto(View vista){
 
         Button boton = (Button) vista;
+        cadenaDisplay += boton.getText();
+        display.setText(cadenaDisplay);
 
-        display.setText("numero" + boton.getText());
-
+    }
+    public void limpiarDisplay(View vista){
+        cadenaDisplay = "";
+        display.setText(cadenaDisplay);
     }
 }

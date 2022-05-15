@@ -11,14 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center">
 
-        <TextView
+        <EditText
             android:id="@+id/display"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:editable="false"
+            android:ems="10"
+            android:textSize="40dp"
+            android:text="" />
     </LinearLayout>
 
     <GridLayout
@@ -42,12 +46,13 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/boton_operaciones"
-            android:text="asd"/>
+            android:text="."/>
 
         <Button
             android:id="@+id/btn_clear"
             style="@style/boton_operaciones"
-            android:text="Clear"/>
+            android:onClick="limpiarDisplay"
+            android:text="CE"/>
 
         <Button
             android:id="@+id/btn_7"
