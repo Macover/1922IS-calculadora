@@ -18,8 +18,9 @@
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:radius">8dp</item>
-        <item name="android:background">@color/purple_500</item>
+        <item name="android:backgroundTint">@color/numeros</item>
         <item name="android:onClick">pintaTexto</item>
         <item name="android:layout_margin">7sp</item>
         <item name="android:layout_gravity">center</item>
@@ -29,9 +30,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15dp</item>
         <item name="android:radius">8dp</item>
-        <item name="android:backgroundTint">@color/teal_200</item>
-        <item name="android:onClick">pintaTexto</item>
+        <item name="android:backgroundTint">@color/operadores</item>
+        <item name="android:onClick">pintaTexto2</item>
         <item name="android:layout_margin">7sp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
