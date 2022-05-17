@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:gravity="center">
+        android:padding="10dp">
 
         <EditText
             android:id="@+id/display"
@@ -21,31 +21,31 @@
             android:layout_height="wrap_content"
             android:editable="false"
             android:ems="10"
-            android:textSize="40dp"
-            android:text="" />
+            android:text=""
+            android:textSize="40dp" />
 
         <TextView
             android:id="@+id/resultados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:textSize="40dp"
-            android:text=""/>
+            android:text=""
+            android:textSize="40dp" />
     </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
         android:layout_weight="1"
         android:columnCount="4"
+        android:padding="4dp"
         android:rowCount="5">
 
         <Button
             android:id="@+id/btn_clear"
             style="@style/boton_operaciones"
             android:onClick="limpiarDisplay"
-            android:text="CE"/>
+            android:text="CE" />
 
         <Button
             android:id="@+id/btn_divicion"
@@ -60,12 +60,12 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/boton_operaciones"
-            android:text="."/>
+            android:text="." />
 
         <Button
             android:id="@+id/btn_7"
             style="@style/boton_numero"
-            android:text="7"/>
+            android:text="7" />
 
         <Button
             android:id="@+id/btn_8"
@@ -75,7 +75,7 @@
         <Button
             android:id="@+id/btn_9"
             style="@style/boton_numero"
-            android:text="9"/>
+            android:text="9" />
 
         <Button
             android:id="@+id/btn_resta"
@@ -120,23 +120,22 @@
         <Button
             android:id="@+id/btn_igual"
             style="@style/boton_operaciones"
-            android:onClick="calcularoperacion2"
+            android:layout_height="136dp"
+            android:layout_rowSpan="2"
             android:backgroundTint="@color/igual"
-            android:textColor="@color/black"
-            android:text="=" />
-        <Button
-            android:enabled="false"
-            style="@style/boton_numero" />
-
-        <Button
-            android:id="@+id/btn_0"
-            style="@style/boton_numero"
-            android:text="0" />
-
+            android:onClick="calcularoperacion2"
+            android:text="="
+            android:textColor="@color/black" />
         <Button
             android:id="@+id/btn_punto"
             style="@style/boton_numero"
             android:text="." />
+        <Button
+            android:id="@+id/btn_0"
+            style="@style/boton_numero"
+            android:layout_columnSpan="2"
+            android:layout_width="160dp"
+            android:text="0" />
 
 
     </GridLayout>
