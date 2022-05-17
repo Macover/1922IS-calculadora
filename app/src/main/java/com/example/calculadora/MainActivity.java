@@ -60,66 +60,74 @@ public class MainActivity extends AppCompatActivity {
     public void calcularoperacion2(View view) {
         String[] display = cadenaDisplay.split(" ");
         List<String> listAux = new ArrayList<>();
-        for (int a = 0; a < display.length; a++) {
-            if(a == 0 && display[0].equals("-") )
+        String[] opds = {"/", "*", "+", "-"};
+        double res = 0;
+        String aux = "";
+        int a = 0;
+        for (a = 0; a < display.length; a++) {
+            if(a == 0 && display[0].equals("") )
             {
-                listAux.add(display[0]+""+display[1]);
-                a++;
+                if (display[1].equals("-")){
+                    aux = display[1] + "" + display[2];
+                    listAux.add(aux);
+                    a += 2;
+                }
             }else
             {
                 listAux.add(display[a]);
             }
         }
-        double res = 0;
-        String[] opds = {"/", "*", "+", "-"};
+
         if(listAux.get(listAux.size()-1).equals("+") || listAux.get(listAux.size()-1).equals("+") || listAux.get(listAux.size()-1).equals("/") || listAux.get(listAux.size()-1).equals("*") || listAux.get(listAux.size()-1).equals("-")){
             this.displayResults.setText("!Syntaxis Error");
         }else {
-            for (int j = 0; j < opds.length; j++) {
-                int i = 0;
-                for (i = 0; i < listAux.size(); i++) {
-                    if (opds[j].equals("/") && listAux.get(i).equals("/")) {
-                        res = Double.parseDouble(listAux.get(i - 1)) / Double.parseDouble(listAux.get(i + 1));
-                        int b = i + 1;
-                        listAux.remove(b);
-                        b = i - 1;
-                        listAux.set(b, String.valueOf(res));
-                        listAux.remove(i);
-                        i = 0;
-                    }
-                    if (opds[j].equals("*") && listAux.get(i).equals("*")) {
-                        res = Double.parseDouble(listAux.get(i - 1)) * Double.parseDouble(listAux.get(i + 1));
-                        int b = i + 1;
-                        listAux.remove(b);
-                        b = i - 1;
-                        listAux.set(b, String.valueOf(res));
-                        listAux.remove(i);
-                        i = 0;
-                    }
-                    if (opds[j].equals("+") && listAux.get(i).equals("+")) {
-                        res = Double.parseDouble(listAux.get(i - 1)) + Double.parseDouble(listAux.get(i + 1));
-                        int b = i + 1;
-                        listAux.remove(b);
-                        b = i - 1;
-                        listAux.set(b, String.valueOf(res));
-                        listAux.remove(i);
-                        i = 0;
-                    }
-                    if (opds[j].equals("-") && listAux.get(i).equals("-")) {
-                        res = Double.parseDouble(listAux.get(i - 1)) - Double.parseDouble(listAux.get(i + 1));
-                        int b = i + 1;
-                        listAux.remove(b);
-                        b = i - 1;
-                        listAux.set(b, String.valueOf(res));
-                        listAux.remove(i);
-                        i = 0;
+            try {
+                for (int j = 0; j < opds.length; j++) {
+                    int i = 0;
+                    for (i = 0; i < listAux.size(); i++) {
+                        if (opds[j].equals("/") && listAux.get(i).equals("/")) {
+                            res = Math.round(Double.parseDouble(listAux.get(i - 1)) / Double.parseDouble(listAux.get(i + 1))* 10000d) / 10000d;
+                            //res = Math.round(res * 10000d) / 10000d;
+                            int b = i + 1;
+                            listAux.remove(b);
+                            b = i - 1;
+                            listAux.set(b, String.valueOf(res));
+                            listAux.remove(i);
+                            i = 0;
+                        }
+                        if (opds[j].equals("*") && listAux.get(i).equals("*")) {
+                            res = Math.round(Double.parseDouble(listAux.get(i - 1)) * Double.parseDouble(listAux.get(i + 1))* 10000d) / 10000d;
+                            int b = i + 1;
+                            listAux.remove(b);
+                            b = i - 1;
+                            listAux.set(b, String.valueOf(res));
+                            listAux.remove(i);
+                            i = 0;
+                        }
+                        if (opds[j].equals("+") && listAux.get(i).equals("+")) {
+                            res = Double.parseDouble(listAux.get(i - 1)) + Double.parseDouble(listAux.get(i + 1));
+                            int b = i + 1;
+                            listAux.remove(b);
+                            b = i - 1;
+                            listAux.set(b, String.valueOf(res));
+                            listAux.remove(i);
+                            i = 0;
+                        }
+                        if (opds[j].equals("-") && listAux.get(i).equals("-")) {
+                            res = Double.parseDouble(listAux.get(i - 1)) - Double.parseDouble(listAux.get(i + 1));
+                            int b = i + 1;
+                            listAux.remove(b);
+                            b = i - 1;
+                            listAux.set(b, String.valueOf(res));
+                            listAux.remove(i);
+                            i = 0;
+                        }
                     }
                 }
-            }
-            if(listAux.size() == 1)
                 this.displayResults.setText(listAux.get(0));
-            else
+            }catch (Exception e){
                 this.displayResults.setText("!Syntaxis Error");
+            }
         }
     }
 }
