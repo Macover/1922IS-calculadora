@@ -21,8 +21,9 @@
             android:layout_height="wrap_content"
             android:editable="false"
             android:ems="10"
-            android:textSize="40dp"
-            android:text="" />
+            android:text=""
+            android:textColorLink="#000000"
+            android:textSize="40dp" />
 
         <TextView
             android:id="@+id/resultados"
