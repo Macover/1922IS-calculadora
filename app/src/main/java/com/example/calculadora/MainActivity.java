@@ -26,34 +26,23 @@ public class MainActivity extends AppCompatActivity {
         displayResults = (TextView) findViewById(R.id.resultados);
     }
 
-    public void pintaTexto(View vista) {
-        Button boton = (Button) vista;
-        cadenaDisplay += boton.getText();
-        display.setText(cadenaDisplay);
-    }
-
-    public void pintaTexto2(View vista) {
-        Button boton = (Button) vista;
-        cadenaDisplay += " " + boton.getText() + " ";
-        display.setText(cadenaDisplay);
-    }
-
     public void limpiarDisplay(View vista) {
         cadenaDisplay = "";
         display.setText(cadenaDisplay);
         displayResults.setText("");
     }
 
-    public void calcularOperacion(View vista) {
-        Expression exp = new Expression(this.cadenaDisplay);
-        String result = String.valueOf(exp.calculate());
+    public void borrarDisplay(View view){
 
-        if (result != "NaN") {
-            this.display.setText(result);
-        } else {
-            this.display.setText("Syntax Error!");
-        }
-        this.cadenaDisplay = "";
+        String displayText = this.display.getText().toString();
+        int ultimoIndice = displayText.length() - 1;
+
+        if(displayText.length() != 0)
+            if(displayText.endsWith(" "))
+                ultimoIndice--;
+            this.cadenaDisplay = displayText.substring(0,ultimoIndice);
+
+        this.display.setText(this.cadenaDisplay);
     }
 
     //Calcular operacion Metodo2
@@ -130,4 +119,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void pintaNumeros(View vista) {
+        Button boton = (Button) vista;
+        cadenaDisplay += boton.getText();
+        display.setText(cadenaDisplay);
+    }
+
+    public void pintaOperadores(View vista) {
+        Button boton = (Button) vista;
+        cadenaDisplay += " " + boton.getText() + " ";
+        display.setText(cadenaDisplay);
+    }
+
+    /*public void calcularOperacion(View vista) {
+        Expression exp = new Expression(this.cadenaDisplay);
+        String result = String.valueOf(exp.calculate());
+
+        if (result != "NaN") {
+            this.display.setText(result);
+        } else {
+            this.display.setText("Syntax Error!");
+        }
+        this.cadenaDisplay = "";
+    }*/
 }

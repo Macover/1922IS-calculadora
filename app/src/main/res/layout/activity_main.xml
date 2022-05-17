@@ -60,7 +60,9 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/boton_operaciones"
-            android:text="." />
+            android:onClick="borrarDisplay"
+            android:drawableRight="@drawable/delete" />
+
 
         <Button
             android:id="@+id/btn_7"
