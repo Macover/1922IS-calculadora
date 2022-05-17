@@ -16,7 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private EditText display;
     private TextView displayResults;
-    private String cadenaDisplay = "";
+    private String cadenaDisplay;
+    final String mensajeError = "Syntax Error!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         display = (EditText) findViewById(R.id.display);
         displayResults = (TextView) findViewById(R.id.resultados);
+        this.cadenaDisplay = "";
     }
 
     public void limpiarDisplay(View vista) {
@@ -35,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     public void borrarDisplay(View view){
 
         String displayText = this.display.getText().toString();
-        int ultimoIndice = displayText.length() - 1;
 
-        if(displayText.length() != 0)
-            if(displayText.endsWith(" "))
-                ultimoIndice--;
+        if(!(displayText.length() == 0)){
+            int ultimoIndice = displayText.length() - 1;
+            if(displayText.endsWith(" ")) ultimoIndice-=2;
             this.cadenaDisplay = displayText.substring(0,ultimoIndice);
+        }
 
         this.display.setText(this.cadenaDisplay);
     }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(listAux.get(listAux.size()-1).equals("+") || listAux.get(listAux.size()-1).equals("+") || listAux.get(listAux.size()-1).equals("/") || listAux.get(listAux.size()-1).equals("*") || listAux.get(listAux.size()-1).equals("-")){
-            this.displayResults.setText("!Syntaxis Error");
+            this.displayResults.setText(this.mensajeError); this.display.setText(""); this.cadenaDisplay = "";
         }else {
             try {
                 for (int j = 0; j < opds.length; j++) {
@@ -115,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 this.displayResults.setText(listAux.get(0));
             }catch (Exception e){
-                this.displayResults.setText("!Syntaxis Error");
+                this.display.setText(""); this.cadenaDisplay = "";
+                this.displayResults.setText(this.mensajeError);
             }
         }
     }
