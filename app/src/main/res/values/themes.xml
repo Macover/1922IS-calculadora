@@ -17,7 +17,7 @@
     <style name="boton_numero">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:radius">8dp</item>
         <item name="android:backgroundTint">@color/numeros</item>
@@ -28,7 +28,7 @@
     <style name="boton_operaciones">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:radius">8dp</item>
         <item name="android:backgroundTint">@color/operadores</item>
         <item name="android:onClick">pintaTexto2</item>
