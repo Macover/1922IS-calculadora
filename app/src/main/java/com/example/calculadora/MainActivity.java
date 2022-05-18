@@ -144,10 +144,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void pintaOperadores(View vista) {
         Button boton = (Button) vista;
+
         if(this.btnIgualPresionado){
             this.cadenaDisplay = this.displayResults.getText().toString();
-            this.display.setText(this.cadenaDisplay);
-            this.btnIgualPresionado = false;
+            if(this.cadenaDisplay.equals(this.mensajeError)){
+                this.cadenaDisplay = "";
+            }else{
+                this.display.setText(this.cadenaDisplay);
+                this.btnIgualPresionado = false;
+            }
         }
         this.cadenaDisplay += " " + boton.getText() + " ";
         this.display.setText(this.cadenaDisplay);
