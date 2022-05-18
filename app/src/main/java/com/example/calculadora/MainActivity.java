@@ -95,23 +95,25 @@ public class MainActivity extends AppCompatActivity {
                             listAux.remove(i);
                             i = 0;
                         }
-                        if (opds[j].equals("+") && listAux.get(i).equals("+")) {
-                            res = Double.parseDouble(listAux.get(i - 1)) + Double.parseDouble(listAux.get(i + 1));
-                            int b = i + 1;
-                            listAux.remove(b);
-                            b = i - 1;
-                            listAux.set(b, String.valueOf(res));
-                            listAux.remove(i);
-                            i = 0;
-                        }
-                        if (opds[j].equals("-") && listAux.get(i).equals("-")) {
-                            res = Double.parseDouble(listAux.get(i - 1)) - Double.parseDouble(listAux.get(i + 1));
-                            int b = i + 1;
-                            listAux.remove(b);
-                            b = i - 1;
-                            listAux.set(b, String.valueOf(res));
-                            listAux.remove(i);
-                            i = 0;
+                        if(j > 1){
+                            if (listAux.get(i).equals("+")) {
+                                res = Double.parseDouble(listAux.get(i - 1)) + Double.parseDouble(listAux.get(i + 1));
+                                int b = i + 1;
+                                listAux.remove(b);
+                                b = i - 1;
+                                listAux.set(b, String.valueOf(res));
+                                listAux.remove(i);
+                                i = 0;
+                            }
+                            if (listAux.get(i).equals("-")) {
+                                res = Double.parseDouble(listAux.get(i - 1)) - Double.parseDouble(listAux.get(i + 1));
+                                int b = i + 1;
+                                listAux.remove(b);
+                                b = i - 1;
+                                listAux.set(b, String.valueOf(res));
+                                listAux.remove(i);
+                                i = 0;
+                            }
                         }
                     }
                 }
