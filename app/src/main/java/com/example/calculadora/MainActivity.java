@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private String cadenaDisplay;
     final String mensajeError = "Syntax Error!";
     private boolean btnIgualPresionado = false;
+    private boolean btnDelete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void limpiarDisplay(View vista) {
         this.btnIgualPresionado = false;
+        this.btnDelete = false;
         cadenaDisplay = "";
         display.setText(cadenaDisplay);
         displayResults.setText("");
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void borrarDisplay(View view) {
 
         String displayText = this.display.getText().toString();
-
+        this.btnDelete = true;
         if (!(displayText.length() == 0)) {
             int ultimoIndice = displayText.length() - 1;
             if (displayText.endsWith(" ")) ultimoIndice -= 2;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     //Calcular operacion Metodo2
     public void calcularoperacion2(View view) {
 
-
+        this.btnDelete = false;
         this.btnIgualPresionado = true;
         String[] display = cadenaDisplay.split(" ");
         List<String> listAux = new ArrayList<>();
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void pintaNumeros(View vista) {
         Button boton = (Button) vista;
-        if(this.btnIgualPresionado){
+        if(this.btnIgualPresionado && !(this.btnDelete)){
             this.cadenaDisplay = "";
             this.btnIgualPresionado = false;
         }
@@ -156,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 this.btnIgualPresionado = false;
             }
         }
+        this.btnDelete = false;
         this.cadenaDisplay += " " + boton.getText() + " ";
         this.display.setText(this.cadenaDisplay);
     }
