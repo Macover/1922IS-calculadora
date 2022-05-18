@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             for (a = 0; a < display.length; a++) {
                 if (a == 0 && display[0].equals("")) {
-                    if (display[1].equals("-")) {
+                    if (display[1].equals("-") || display[1].equals("+")) {
                         aux = display[1] + "" + display[2];
                         listAux.add(aux);
                         a += 2;
