@@ -60,10 +60,11 @@ public class MainActivity extends AppCompatActivity {
         double res = 0;
         String aux = "";
         int a = 0;
-        for (a = 0; a < display.length; a++) {
-            if (a == 0 && display[0].equals("")) {
-                if (display[1].equals("-")) {
-                    aux = display[1] + "" + display[2];
+        try {
+            for (a = 0; a < display.length; a++) {
+                if (a == 0 && display[0].equals("")) {
+                    if (display[1].equals("-")) {
+                        aux = display[1] + "" + display[2];
                         listAux.add(aux);
                         a += 2;
                     }
@@ -83,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                         for (i = 0; i < listAux.size(); i++) {
                             if (opds[j].equals("/") && listAux.get(i).equals("/")) {
                                 res = Math.round(Double.parseDouble(listAux.get(i - 1)) / Double.parseDouble(listAux.get(i + 1)) * 10000d) / 10000d;
-                                //res = Math.round(res * 10000d) / 10000d;
                                 int b = i + 1;
                                 listAux.remove(b);
                                 b = i - 1;
@@ -129,7 +129,9 @@ public class MainActivity extends AppCompatActivity {
                     this.displayResults.setText(this.mensajeError);
                 }
             }
-
+        }catch (Exception e){
+            this.displayResults.setText(this.mensajeError);
+        }
     }
 
     public void pintaNumeros(View vista) {
